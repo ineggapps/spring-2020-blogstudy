@@ -1,4 +1,4 @@
-package com.javalec.ex;
+package com.javalec.e;
 
 import java.text.DateFormat;
 import java.util.Date;
