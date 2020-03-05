@@ -11,6 +11,7 @@ public class AdminConnection implements EnvironmentAware, InitializingBean, Disp
 	private String adminId;
 	private String adminPw;
 
+	//Bean이 최초로 생성되는 시점 이후 바로 실행된다 (InitializingBean을 오버라이딩한 메서드보다 먼저 실행된다)
 	@Override
 	public void setEnvironment(Environment env) {
 		System.out.println("setEnviornment()");
