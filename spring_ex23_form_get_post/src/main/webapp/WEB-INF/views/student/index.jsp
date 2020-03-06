@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -13,11 +13,11 @@
 	%>
 
 	<form action="<%=context%>/student/studentView" method="post">
-		ÀÌ¸§: <input type="text" name="name"><br/>
-		 ³ªÀÌ: <input type="text" name="age"><br/>
-		 ÇĞ³â: <input type="text" name="gradeNum"><br />
-		  ¹İ: <input type="text" name="classNum"><br/>
-		  <input type="submit" value="Àü¼Û">
+		ì´ë¦„: <input type="text" name="name"><br/>
+		 ë‚˜ì´: <input type="text" name="age"><br/>
+		 í•™ë…„: <input type="text" name="gradeNum"><br />
+		  ë°˜: <input type="text" name="classNum"><br/>
+		  <input type="submit" value="ì „ì†¡">
 	</form>
 
 </body>
