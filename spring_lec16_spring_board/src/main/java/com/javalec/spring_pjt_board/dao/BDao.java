@@ -27,6 +27,29 @@ public class BDao {
 		}
 	}
 
+	public void write(String bName, String bTitle, String bContent) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "insert into mvc_board(bId, bName, bTitle, bContent, bHit, bGroup, bStep, bIndent) values(mvc_board_seq.nextval,?, ?, ?, 0, mvc_board_seq.currval, 0, 0)";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, bName);
+			preparedStatement.setString(2, bTitle);
+			preparedStatement.setString(3, bContent);
+			preparedStatement.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement !=null) preparedStatement.close();
+				if(connection !=null) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public ArrayList<BDto> list() {
 		ArrayList<BDto> dtos = new ArrayList<BDto>();
 		Connection connection = null;
