@@ -7,14 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.javalec.spring_pjt_board.BReplyViewCommand;
-import com.javalec.spring_pjt_board.BWriteCommand;
 import com.javalec.spring_pjt_board.command.BCommand;
 import com.javalec.spring_pjt_board.command.BContentCommand;
 import com.javalec.spring_pjt_board.command.BDeleteCommand;
 import com.javalec.spring_pjt_board.command.BListCommand;
 import com.javalec.spring_pjt_board.command.BModifyCommand;
 import com.javalec.spring_pjt_board.command.BReplyCommand;
+import com.javalec.spring_pjt_board.command.BReplyViewCommand;
+import com.javalec.spring_pjt_board.command.BWriteCommand;
 
 public class BController {
 	BCommand command;

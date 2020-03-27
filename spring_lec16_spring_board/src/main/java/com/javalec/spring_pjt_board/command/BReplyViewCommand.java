@@ -1,8 +1,6 @@
-package com.javalec.spring_pjt_board;
+package com.javalec.spring_pjt_board.command;
 
 import org.springframework.ui.Model;
-
-import com.javalec.spring_pjt_board.command.BCommand;
 
 public class BReplyViewCommand implements BCommand {
 
