@@ -3,6 +3,7 @@ package com.javalec.spring_pjt_board.controller;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,7 @@ import com.javalec.spring_pjt_board.command.BReplyCommand;
 import com.javalec.spring_pjt_board.command.BReplyViewCommand;
 import com.javalec.spring_pjt_board.command.BWriteCommand;
 
+@Controller
 public class BController {
 	BCommand command;
 
