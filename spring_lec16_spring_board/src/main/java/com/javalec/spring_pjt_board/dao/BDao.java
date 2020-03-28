@@ -27,6 +27,78 @@ public class BDao {
 		}
 	}
 
+	public void upHit(String bId) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "update mvc_board set bHit = bHit+1 where bId = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, bId);
+			int rn = preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public BDto contentView(String strbId) {
+
+		upHit(strbId);// 조회수 증가
+
+		BDto dto = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			System.out.println("조회 중..."+strbId);
+			connection = dataSource.getConnection();
+			String query = "select * from mvc_board where bId = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(strbId));
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				int bId = resultSet.getInt("bId");
+				String bName = resultSet.getString("bName");
+				String bTitle = resultSet.getString("bTitle");
+				String bContent = resultSet.getString("bContent");
+				Timestamp bDate = resultSet.getTimestamp("bDate");
+				int bHit = resultSet.getInt("bHit");
+				int bGroup = resultSet.getInt("bGroup");
+				int bStep = resultSet.getInt("bStep");
+				int bIndent = resultSet.getInt("bIndent");
+
+				dto = new BDto(bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return dto;
+	}
+
 	public void write(String bName, String bTitle, String bContent) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -37,14 +109,17 @@ public class BDao {
 			preparedStatement.setString(1, bName);
 			preparedStatement.setString(2, bTitle);
 			preparedStatement.setString(3, bContent);
-			preparedStatement.executeUpdate();
-		}catch(Exception e) {
+			int rn = preparedStatement.executeUpdate();
+			System.out.println("글쓰기 시도 => " + rn);
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(preparedStatement !=null) preparedStatement.close();
-				if(connection !=null) connection.close();
-			}catch(Exception e) {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

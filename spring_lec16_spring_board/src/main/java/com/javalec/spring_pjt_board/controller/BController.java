@@ -34,6 +34,7 @@ public class BController {
 		System.out.println("write_view()");
 
 		command = new BWriteCommand();
+		command.execute(model);
 		return "write_view";
 	}
 
@@ -47,7 +48,7 @@ public class BController {
 	}
 
 	@RequestMapping("/content_view")
-	public String content_view(HttpServlet request, Model model) {
+	public String content_view(HttpServletRequest request, Model model) {
 		System.out.println("content_view()");
 		model.addAttribute("request", request);
 		command = new BContentCommand();
@@ -65,7 +66,7 @@ public class BController {
 	}
 
 	@RequestMapping("/reply_view")
-	public String reply_view(HttpServlet request, Model model) {
+	public String reply_view(HttpServletRequest request, Model model) {
 		System.out.println("reply_view");
 		model.addAttribute("request", request);
 		command = new BReplyViewCommand();
