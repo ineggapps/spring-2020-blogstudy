@@ -12,7 +12,7 @@ public class BReplyCommand implements BCommand {
 
 	@Override
 	public void execute(Model model) {
-		
+
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		String bId = request.getParameter("bId");
@@ -22,7 +22,8 @@ public class BReplyCommand implements BCommand {
 		String bGroup = request.getParameter("bGroup");
 		String bStep = request.getParameter("bStep");
 		String bIndent = request.getParameter("bIndent");
-		
+
+		System.out.println(String.format("%s %s %s %s %s %s %s", bId, bName, bTitle, bContent, bGroup, bStep, bIndent));
 		BDao dao = new BDao();
 		dao.reply(bId, bName, bTitle, bContent, bGroup, bStep, bIndent);
 	}

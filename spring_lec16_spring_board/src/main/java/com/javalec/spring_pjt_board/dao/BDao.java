@@ -58,6 +58,7 @@ public class BDao {
 		try {
 			connection = dataSource.getConnection();
 			String query = "update mvc_board set bStep = bStep + 1 where bGroup = ? and bStep > ?";
+			System.out.println(String.format("update mvc_board set bStep = bStep + 1 where bGroup = %s and bStep > %s", strGroup,strStep));
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, Integer.parseInt(strGroup));
 			preparedStatement.setInt(2, Integer.parseInt(strStep));
