@@ -1,6 +1,5 @@
 package com.javalec.spring_pjt_board.controller;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -32,9 +31,6 @@ public class BController {
 	@RequestMapping("write_view")
 	public String write_view(Model model) {
 		System.out.println("write_view()");
-
-		command = new BWriteCommand();
-		command.execute(model);
 		return "write_view";
 	}
 
@@ -58,7 +54,7 @@ public class BController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/modify")
 	public String modify(HttpServletRequest request, Model model) {
-		System.out.println("modify");
+		System.out.println("modify()");
 		model.addAttribute("request", request);
 		command = new BModifyCommand();
 		command.execute(model);
