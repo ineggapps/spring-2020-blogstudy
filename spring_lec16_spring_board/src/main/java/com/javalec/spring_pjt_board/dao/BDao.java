@@ -58,6 +58,7 @@ public class BDao {
 		try {
 			connection = dataSource.getConnection();
 			String query = "update mvc_board set bStep = bStep + 1 where bGroup = ? and bStep > ?";
+			//bStep의 현재 값보다 1을 증가시킨다. 결론적으로 이전에 작성되었던 bStep의 수치가 하나씩 증가됨. 새로 작성된 답변글은 bStep이 수치가 하나씩 증가되기 이전의 수치(현잿값)부터 시작
 			System.out.println(String.format("update mvc_board set bStep = bStep + 1 where bGroup = %s and bStep > %s", strGroup,strStep));
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, Integer.parseInt(strGroup));
