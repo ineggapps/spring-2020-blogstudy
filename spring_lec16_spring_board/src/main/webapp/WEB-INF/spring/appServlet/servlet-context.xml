@@ -30,7 +30,7 @@
 		base-package="com.javalec.spring_pjt_board" />
 
 	<beans:bean name="dataSource"
-		class="org.sprintframework.jdbc.datasource.DriverManagerDataSource">
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
@@ -41,6 +41,7 @@
 	
 	<beans:bean name="template" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource"/>
+		
 	</beans:bean>
 
 </beans:beans>
